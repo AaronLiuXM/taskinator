@@ -1,18 +1,17 @@
-// declare buttonEL and save as memory to save-task
-var buttonEl = document.querySelector("#save-task");
+// declare formEl and save as memory to save-task
+var formEl = document.querySelector("#task-form");
 // declare tasksToDoEl and save as memory to tasks-to-do
 var tasksToDoEl = document.querySelector("#tasks-to-do");
 
-var createTaskHandler = function () {
-    // declare listItemEl create <"li">
+var createTaskHandler = function(event) {
+
+    event.preventDefault();
+
     var listItemEl = document.createElement("li");
-    // match style as task-item
     listItemEl.className = "task-item";
-    // add text content in new <li>
     listItemEl.textContent = "This is a new task.";
-    // append to listItemEl as a child node
-    tasksToDoEl.appendChild(listItemEl);
-}
+    tasksToDoEl.append(listItemEl);
+};
 
 // button func -> click then call func
-buttonEl.addEventListener("click", createTaskHandler);
+formEl.addEventListener("click", createTaskHandler);
