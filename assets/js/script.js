@@ -219,17 +219,19 @@ var saveTasks = function() {
 }
 
 var loadTasks = function() {
-    var savedTasks = localStorage.getItem("tasks");
+    tasks = localStorage.getItem("tasks");
 
-    if (!savedTasks) {
+    if (!tasks) {
+        tasks = [];
         return false;
     }
-    console.log("Saved tasks found!");
 
-    savedTasks = JSON.parse(savedTasks);
+    tasks = JSON.parse(savedTasks);
 
+    // loop through savedTasks array
     for (var i = 0; i < savedTasks.length; i++) {
-        createTaskEl(savedTasks[i]);
+        // pass each task object into the `createTaskEl()` function
+        createTaskEl(saveTasks[i]);
     }
 };
 
